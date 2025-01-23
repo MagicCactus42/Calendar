@@ -1,0 +1,22 @@
+namespace PetProject.Core.ValueObjects;
+
+public sealed record Date()
+{
+    private DateTimeOffset Value { get; }
+
+    public Date(DateTimeOffset value) : this()
+    {
+        Value = value.Date;
+    }
+
+    public Date AddDays(int days) => new(Value.AddDays(days));
+
+    public static implicit operator DateTimeOffset(Date date) => date.Value;
+    public static implicit operator Date(DateTimeOffset value) => new(value);
+    public static bool operator <(Date date1, Date date2) => date1.Value < date2.Value;
+    public static bool operator >(Date date1, Date date2) => date1.Value > date2.Value;
+    public static bool operator <=(Date date1, Date date2) => date1.Value <= date2.Value;
+    public static bool operator >=(Date date1, Date date2) => date1.Value >= date2.Value;
+
+    public static Date Now => new(DateTimeOffset.Now);
+}
