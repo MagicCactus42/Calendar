@@ -2,7 +2,7 @@ namespace PetProject.Core.ValueObjects;
 
 public sealed record Date()
 {
-    private DateTimeOffset Value { get; }
+    public DateTimeOffset Value { get; }
 
     public Date(DateTimeOffset value) : this()
     {

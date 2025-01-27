@@ -2,7 +2,7 @@ namespace PetProject.Core.ValueObjects;
 
 public sealed record EventDescription
 {
-    private string Value { get; }
+    public string Value { get; }
 
     public EventDescription(string value)
     {

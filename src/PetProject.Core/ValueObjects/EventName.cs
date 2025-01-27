@@ -4,17 +4,17 @@ namespace PetProject.Core.ValueObjects;
 
 public sealed record EventName
 {
-    private string Name { get; }
+    public string Value { get; }
 
-    public EventName(string name)
+    public EventName(string value)
     {
-        if (string.IsNullOrWhiteSpace(name))
+        if (string.IsNullOrWhiteSpace(value))
             throw new InvalidEventNameException();
         
-        Name = name;
+        Value = value;
     }
     
-    public static implicit operator string(EventName eventName) => eventName.Name;
+    public static implicit operator string(EventName eventName) => eventName.Value;
     public static implicit operator EventName(string eventName) => new(eventName);
-    public override string ToString() => Name;
+    public override string ToString() => Value;
 }

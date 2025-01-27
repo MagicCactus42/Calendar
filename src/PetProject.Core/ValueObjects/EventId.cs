@@ -4,7 +4,7 @@ namespace PetProject.Core.ValueObjects;
 
 public sealed record EventId
 {
-    private Guid Value { get; }
+    public Guid Value { get; }
 
     public EventId(Guid value)
     {

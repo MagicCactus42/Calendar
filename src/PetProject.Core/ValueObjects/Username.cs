@@ -4,7 +4,7 @@ namespace PetProject.Core.ValueObjects;
 
 public sealed record Username
 {
-    private string Value { get; }
+    public string Value { get; }
     
     public Username(string value)
     {

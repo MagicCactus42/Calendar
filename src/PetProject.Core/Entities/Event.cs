@@ -2,16 +2,17 @@ using PetProject.Core.ValueObjects;
 
 namespace PetProject.Core.Entities;
 
-public class Event
+public class Events
 {
-    public EventId EventId { get; set; }
-    public EventName EventName { get; set; }
-    public EventDescription EventDescription { get; set; }
-    public EventDuration From { get; set; }
-    public EventDuration To { get; set; }
-    public bool IsActive { get; set; }
+    public EventId EventId { get; }
+    public EventName EventName { get; private set; }
+    public EventDescription EventDescription { get; private set; }
+    public From From { get; private set; }
+    public To To { get; private set; }
+    public bool IsActive { get; private set; }
+    public UserId OwnerId { get; private set; }
 
-    public Event(EventId eventId, EventName eventName, EventDescription eventDescription, bool isActive, EventDuration from, EventDuration to)
+    public Events(EventId eventId, EventName eventName, EventDescription eventDescription, bool isActive, From from, To to, UserId ownerId)
     {
         EventId = eventId;
         EventName = eventName;
@@ -19,5 +20,6 @@ public class Event
         IsActive = isActive;
         From = from;
         To = to;
+        OwnerId = ownerId;
     }
 }
