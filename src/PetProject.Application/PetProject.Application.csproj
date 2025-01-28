@@ -10,4 +10,9 @@
       <ProjectReference Include="..\PetProject.Core\PetProject.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Commands\Handlers\" />
+      <Folder Include="Queries\" />
+    </ItemGroup>
+
 </Project>
