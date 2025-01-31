@@ -1,6 +1,8 @@
 using PetProject.Application;
 using PetProject.Core;
 using PetProject.Infrastructure;
+using PetProject.Infrastructure.Logging;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
@@ -9,5 +11,12 @@ builder.Services
     .AddInfrastructure()
     .AddControllers();
 
+builder.UseSerilog();
+
 var app = builder.Build();
+
+app.UseInfrastructure();
+
+app.MapControllers();
+
 app.Run();

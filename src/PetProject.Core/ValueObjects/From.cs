@@ -8,4 +8,7 @@ public sealed record From
     {
         Value = value;
     }
+    
+    public static implicit operator DateTimeOffset(From from) => from.Value;
+    public static implicit operator From(DateTimeOffset value) => new(value);
 }

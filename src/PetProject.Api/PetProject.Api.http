@@ -1,6 +1,12 @@
-@PetProject.Api_HostAddress = http://localhost:5247
-
-GET {{PetProject.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+@HostAddress = http://localhost:5247
 
 ###
+POST {{HostAddress}}/api/event/create
+Content-Type: application/json
+
+{
+  "EventName": "Work",
+  "EventDescription": "call at 12pm",
+  "From": "2025-01-31T13:00:00Z",
+  "To": "2025-01-31T15:00:00Z"
+}

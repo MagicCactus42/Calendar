@@ -1,22 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
-using PetProject.Core.Entities;
-using PetProject.Core.Repositories;
-using PetProject.Core.ValueObjects;
-using EventId = PetProject.Core.ValueObjects.EventId;
+using PetProject.Application.Abstractions;
+using PetProject.Application.Commands;
 
 namespace PetProject.Api.Controllers
 {
     [ApiController]
-    [Route("api/events")]
+    [Route("api/event")]
     public class EventsController : ControllerBase
     {
-        private readonly IEventRepository _eventRepository;
+        private readonly ICommandHandler<CreateEvent> _createEvent;
 
-        public EventsController(IEventRepository eventRepository)
+        public EventsController(ICommandHandler<CreateEvent> createEvent)
         {
-            _eventRepository = eventRepository;
+            _createEvent = createEvent;
         }
 
-        
+        [HttpPost("create")]
+        public async Task<ActionResult> Post(CreateEvent command)
+        {
+            command = command with { OwnerId = Guid.NewGuid() };
+            await _createEvent.HandleAsync(command);
+            return NoContent();
+        }
     }
 }
