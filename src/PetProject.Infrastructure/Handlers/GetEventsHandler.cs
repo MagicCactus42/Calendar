@@ -1,0 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+using PetProject.Application.Abstractions;
+using PetProject.Application.DTO;
+using PetProject.Application.Queries;
+using PetProject.Core.ValueObjects;
+using PetProject.Infrastructure.DAL;
+
+namespace PetProject.Infrastructure.Handlers;
+
+internal sealed class GetEventsHandler : IQueryHandler<GetEvents, IEnumerable<EventsDto>>
+{
+    private readonly PetProjectDbContext _context;
+
+    public GetEventsHandler(PetProjectDbContext context)
+        => _context = context;
+    
+    public async Task<IEnumerable<EventsDto>> HandleAsync(GetEvents query)
+    {
+        var ownerId = query.OwnerId;
+        var events = await _context.Events
+            .Where(x => x.OwnerId == (UserId)ownerId)
+            .AsNoTracking().ToListAsync();
+
+        return events.Select(x => x.AsDto());
+    }
+}
