@@ -8,28 +8,33 @@ namespace PetProject.Infrastructure.DAL.Repositories;
 internal sealed class PostgresEventRepository : IEventRepository
 {
     private readonly PetProjectDbContext _dbContext;
+    private readonly DbSet<Events> _events;
 
     public PostgresEventRepository(PetProjectDbContext dbContext)
     {
         _dbContext = dbContext;
+        _events = _dbContext.Events;
     }
     
     public async Task AddAsync(Events events)
+        => await _events.AddAsync(events);
+
+    public Task UpdateAsync(Events events)
     {
-        _dbContext.Events.Add(events);
-        await _dbContext.SaveChangesAsync();
+        _events.Update(events);
+        return Task.CompletedTask;
     }
 
-    public async Task RemoveAsync(Events events)
+    public Task RemoveAsync(Events events)
     {
-        _dbContext.Events.Remove(events);
-        await _dbContext.SaveChangesAsync();
+        _events.Remove(events);
+        return Task.CompletedTask;
     }
+    
 
     public async Task<Events?> GetByIdAsync(EventId eventId)
-        => await _dbContext.Events.SingleOrDefaultAsync(x => x.EventId == eventId);
+        => await _events.SingleOrDefaultAsync(x => x.EventId == eventId);
 
     public async Task<IEnumerable<Events>> GetAllAsync(UserId userId)
-        => await _dbContext.Events.Include(x => x.OwnerId == userId).ToListAsync();
-    
+        => await _events.Include(x => x.OwnerId == userId).ToListAsync();
 }

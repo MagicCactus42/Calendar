@@ -15,6 +15,7 @@ internal static class Extensions
         services.AddDbContext<PetProjectDbContext>(x => x.UseNpgsql(connectionString));
 
         services.AddScoped<IEventRepository, PostgresEventRepository>();
+        services.AddScoped<IUserRepository, PostgresUserRepository>();
 
         return services;
     }

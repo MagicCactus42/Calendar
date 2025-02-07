@@ -3,10 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 using PetProject.Application.Abstractions;
 using PetProject.Application.DTO;
 using PetProject.Application.Queries;
+using PetProject.Core.Abstractions;
 using PetProject.Infrastructure.DAL;
 using PetProject.Infrastructure.Exceptions;
 using PetProject.Infrastructure.Handlers;
 using PetProject.Infrastructure.Logging;
+using PetProject.Infrastructure.Time;
 
 namespace PetProject.Infrastructure;
 
@@ -15,7 +17,9 @@ public static class Extensions
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         services.AddSingleton<ExceptionsMiddleware>();
-        services.AddPostgres();
+        services
+            .AddSingleton<IClock, Clock>()
+            .AddPostgres();
         
         // var assemblies = new[]
         // {

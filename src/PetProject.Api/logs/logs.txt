@@ -414,3 +414,77 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
 2025-02-02 23:53:03.561 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Get (PetProject.Api)'
 2025-02-02 23:53:03.563 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/api/event/get/2efe9bb0-3f5e-4269-9f19-923bc0e77239 - 415 null application/problem+json; charset=utf-8 117.4359ms
 2025-02-03 00:13:05.972 +01:00 [INF] Application is shutting down...
+2025-02-03 11:34:15.927 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-03 11:34:15.960 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-03 11:34:15.978 +01:00 [INF] Hosting environment: Development
+2025-02-03 11:34:15.987 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-03 11:34:16.559 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/ - null null
+2025-02-03 11:34:16.659 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/ - 404 0 null 106.76ms
+2025-02-03 11:34:16.690 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5247/, Response status code: 404
+2025-02-03 11:34:32.294 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5247/api/event/create - application/json 128
+2025-02-03 11:34:32.303 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Post (PetProject.Api)'
+2025-02-03 11:34:32.345 +01:00 [INF] Route matched with {action = "Post", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Post(PetProject.Application.Commands.CreateEvent) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-03 11:34:33.309 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Post (PetProject.Api) - Validation state: "Valid"
+2025-02-03 11:34:33.345 +01:00 [INF] Started handling a command: create_event...
+2025-02-03 11:34:34.914 +01:00 [INF] Executed DbCommand (113ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?' (DbType = DateTime), @p4='?' (DbType = Boolean), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Events" ("EventId", "EventDescription", "EventName", "From", "IsActive", "OwnerId", "To")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-02-03 11:34:34.951 +01:00 [INF] Completed handling a command: create_event.
+2025-02-03 11:34:34.959 +01:00 [INF] Executed action method PetProject.Api.Controllers.EventsController.Post (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1643.4095ms.
+2025-02-03 11:34:34.974 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Guid'.
+2025-02-03 11:34:35.002 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Post (PetProject.Api) in 2650.1532ms
+2025-02-03 11:34:35.007 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Post (PetProject.Api)'
+2025-02-03 11:34:35.029 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5247/api/event/create - 200 null application/json; charset=utf-8 2735.9537ms
+2025-02-03 11:34:42.087 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/api/event/get/e727e29f-00e0-43f9-b519-062801ec201d - null null
+2025-02-03 11:34:42.093 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Get (PetProject.Api)'
+2025-02-03 11:34:42.102 +01:00 [INF] Route matched with {action = "Get", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[PetProject.Application.DTO.EventsDto]]] Get(System.Guid) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-03 11:34:42.112 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-03 11:34:42.419 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Get (PetProject.Api) in 311.2076ms
+2025-02-03 11:34:42.421 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Get (PetProject.Api)'
+2025-02-03 11:34:42.423 +01:00 [ERR] The LINQ expression 'DbSet<Events>()
+    .Where(e => e.OwnerId.Value == __query_OwnerId_0)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+System.InvalidOperationException: The LINQ expression 'DbSet<Events>()
+    .Where(e => e.OwnerId.Value == __query_OwnerId_0)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutorExpression[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass11_0`1.<ExecuteCore>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteCore[TResult](Expression query, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at PetProject.Infrastructure.Handlers.GetEventsHandler.HandleAsync(GetEvents query) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Handlers\GetEventsHandler.cs:line 18
+   at PetProject.Api.Controllers.EventsController.Get(Guid id) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api\Controllers\EventsController.cs:line 35
+   at lambda_method106(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at PetProject.Infrastructure.Exceptions.ExceptionsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Exceptions\ExceptionsMiddleware.cs:line 21
+2025-02-03 11:34:42.480 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/api/event/get/e727e29f-00e0-43f9-b519-062801ec201d - 500 null application/json; charset=utf-8 393.5803ms
+2025-02-03 11:48:05.268 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/api/event/get/e727e29f-00e0-43f9-b519-062801ec201d - null null
+2025-02-03 11:48:05.273 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Get (PetProject.Api)'
+2025-02-03 11:48:05.279 +01:00 [INF] Route matched with {action = "Get", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[PetProject.Application.DTO.EventsDto]]] Get(System.Guid) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-03 11:48:05.287 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-03 11:48:05.479 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."EventId", e."EventDescription", e."EventName", e."From", e."IsActive", e."OwnerId", e."To"
+FROM "Events" AS e
+WHERE e."OwnerId" = @__p_0
+2025-02-03 11:48:05.522 +01:00 [INF] Executed action method PetProject.Api.Controllers.EventsController.Get (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 232.3139ms.
+2025-02-03 11:48:05.526 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[PetProject.Core.Entities.Events, PetProject.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[PetProject.Application.DTO.EventsDto, PetProject.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-03 11:48:05.554 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Get (PetProject.Api) in 271.6535ms
+2025-02-03 11:48:05.556 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Get (PetProject.Api)'
+2025-02-03 11:48:05.558 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/api/event/get/e727e29f-00e0-43f9-b519-062801ec201d - 200 null application/json; charset=utf-8 290.5596ms
+2025-02-03 11:49:42.752 +01:00 [INF] Application is shutting down...

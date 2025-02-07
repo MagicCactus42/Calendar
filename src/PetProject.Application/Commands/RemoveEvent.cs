@@ -2,4 +2,4 @@ using PetProject.Application.Abstractions;
 
 namespace PetProject.Application.Commands;
 
-public record RemoveEvent(Guid UserId, Guid EventId) : ICommand;
+public record RemoveEvent(Guid EventId) : ICommand;
