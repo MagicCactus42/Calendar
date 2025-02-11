@@ -5,6 +5,7 @@ using PetProject.Core.ValueObjects;
 
 namespace PetProject.Infrastructure.DAL.Repositories;
 
+#nullable enable
 internal sealed class PostgresEventRepository : IEventRepository
 {
     private readonly PetProjectDbContext _dbContext;

@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PetProject.Application.Abstractions;
 using PetProject.Application.DTO;
 using PetProject.Application.Queries;
 using PetProject.Core.Abstractions;
+using PetProject.Infrastructure.Auth;
 using PetProject.Infrastructure.DAL;
 using PetProject.Infrastructure.Exceptions;
 using PetProject.Infrastructure.Handlers;
@@ -15,13 +17,18 @@ namespace PetProject.Infrastructure;
 
 public static class Extensions
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddSingleton<ExceptionsMiddleware>();
         services.AddSecurity();
+        services.AddAuth(configuration);
+        services.AddHttpContextAccessor();
+        
         services
             .AddSingleton<IClock, Clock>()
             .AddPostgres();
+        
+        services.AddCustomLogging();
         
         // var assemblies = new[]
         // {
@@ -37,15 +44,26 @@ public static class Extensions
         services.AddScoped<IQueryHandler<GetUser, UserDto>, GetUserHandler>();
         services.AddScoped<IQueryHandler<GetUsers, IEnumerable<UserDto>>, GetUsersHandler>();
         
-        services.AddCustomLogging();
-        
         return services;
     }
 
     public static WebApplication UseInfrastructure(this WebApplication app)
     {
         app.UseMiddleware<ExceptionsMiddleware>();
+        app.UseAuthentication();
+        app.UseAuthorization();
+        
+        app.MapControllers();
 
         return app;
+    }
+    
+    public static T GetOptions<T>(this IConfiguration configuration, string sectionName) where T : class, new()
+    {
+        var options = new T();
+        var section = configuration.GetRequiredSection(sectionName);
+        section.Bind(options);
+
+        return options;
     }
 }

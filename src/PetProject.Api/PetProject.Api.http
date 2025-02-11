@@ -6,11 +6,27 @@ POST {{HostAddress}}/Users
 Content-Type: application/json
 
 {
-  "email": "cockset222@proton.me",
-  "username": "cockset222",
+  "email": "cockset@proton.me",
+  "username": "cockset",
   "password": "secret123",
   "role": "user"
 }
+
+###
+POST {{HostAddress}}/Users/sign-in
+Content-Type: application/json
+
+{
+  "email": "cockset@proton.me",
+  "password": "secret123"
+}
+
+###
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjI0YmI4My0yYWViLTQzYmYtOThlOC02NDU2MDE1MTk3OGMiLCJ1bmlxdWVfbmFtZSI6IjViMjRiYjgzLTJhZWItNDNiZi05OGU4LTY0NTYwMTUxOTc4YyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6InVzZXIiLCJuYmYiOjE3MzkyNzUzMDIsImV4cCI6MTczOTM2MTcwMiwiaXNzIjoicGV0cHJvamVjdC1pc3N1ZXIiLCJhdWQiOiJwZXRwcm9qZWN0LWF1ZGllbmNlIn0.WaLEpg46dc5mwOi9cbzwZ6y7_m3Z7_vnPQptGv8AbWA
+
+###
+GET {{HostAddress}}/Users/me
+Authorization: Bearer {{accessToken}}
 
 ###
 POST {{HostAddress}}/api/event/create

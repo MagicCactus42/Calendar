@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PetProject.Application.Abstractions;
 using PetProject.Core.Repositories;
+using PetProject.Infrastructure.DAL.Decorators;
 using PetProject.Infrastructure.DAL.Repositories;
 
 namespace PetProject.Infrastructure.DAL;
@@ -14,6 +16,9 @@ internal static class Extensions
 
         services.AddDbContext<PetProjectDbContext>(x => x.UseNpgsql(connectionString));
 
+        services.AddScoped<IUnitOfWork, PostgresUnitOfWork>();
+        services.TryDecorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
+            
         services.AddScoped<IEventRepository, PostgresEventRepository>();
         services.AddScoped<IUserRepository, PostgresUserRepository>();
 

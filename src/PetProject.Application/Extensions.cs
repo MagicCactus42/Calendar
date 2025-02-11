@@ -11,6 +11,7 @@ public static class Extensions
     {
         services.AddScoped<ICommandHandler<CreateEvent>, CreateEventHandler>();
         services.AddScoped<ICommandHandler<SignUp>, SignUpHandler>();
+        services.AddScoped<ICommandHandler<SignIn>, SignInHandler>();
         
         return services;
     }
