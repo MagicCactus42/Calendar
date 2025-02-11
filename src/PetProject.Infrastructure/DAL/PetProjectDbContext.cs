@@ -7,6 +7,7 @@ internal sealed class PetProjectDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Events> Events { get; set; }
+    public DbSet<ScheduledEvent> ScheduledEvents { get; set; }
 
     public PetProjectDbContext(DbContextOptions<PetProjectDbContext> dbContextOptions) : base(dbContextOptions)
     {

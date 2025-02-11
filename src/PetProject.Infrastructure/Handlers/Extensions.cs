@@ -15,4 +15,12 @@ public static class Extensions
             To = entity.To.Value,
             OwnerId = entity.OwnerId.Value
         };
+
+    public static UserDto AsDto(this User entity)
+        => new()
+        {
+            Id = entity.UserId,
+            Email = entity.Email,
+            Username = entity.Username
+        };
 }

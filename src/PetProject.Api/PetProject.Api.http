@@ -2,14 +2,26 @@
 @userId = e727e29f-00e0-43f9-b519-062801ec201d
 
 ###
+POST {{HostAddress}}/Users
+Content-Type: application/json
+
+{
+  "email": "cockset222@proton.me",
+  "username": "cockset222",
+  "password": "secret123",
+  "role": "user"
+}
+
+###
 POST {{HostAddress}}/api/event/create
 Content-Type: application/json
 
 {
   "EventName": "Work",
   "EventDescription": "call at 2pm",
-  "From": "2025-02-04T14:00:00Z",
-  "To": "2025-02-04T15:00:00Z"
+  "From": "2025-02-10T14:00:00Z",
+  "To": "2025-02-10T15:00:00Z",
+  "CanOverlap": false
 }
 
 ###

@@ -2,7 +2,6 @@ using PetProject.Application;
 using PetProject.Core;
 using PetProject.Infrastructure;
 using PetProject.Infrastructure.Logging;
-using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services

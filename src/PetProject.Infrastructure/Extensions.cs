@@ -8,6 +8,7 @@ using PetProject.Infrastructure.DAL;
 using PetProject.Infrastructure.Exceptions;
 using PetProject.Infrastructure.Handlers;
 using PetProject.Infrastructure.Logging;
+using PetProject.Infrastructure.Security;
 using PetProject.Infrastructure.Time;
 
 namespace PetProject.Infrastructure;
@@ -17,6 +18,7 @@ public static class Extensions
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         services.AddSingleton<ExceptionsMiddleware>();
+        services.AddSecurity();
         services
             .AddSingleton<IClock, Clock>()
             .AddPostgres();
@@ -32,6 +34,8 @@ public static class Extensions
         //         .AsImplementedInterfaces().WithScopedLifetime());
 
         services.AddScoped<IQueryHandler<GetEvents, IEnumerable<EventsDto>>, GetEventsHandler>();
+        services.AddScoped<IQueryHandler<GetUser, UserDto>, GetUserHandler>();
+        services.AddScoped<IQueryHandler<GetUsers, IEnumerable<UserDto>>, GetUsersHandler>();
         
         services.AddCustomLogging();
         
