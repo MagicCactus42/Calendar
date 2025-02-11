@@ -708,3 +708,36 @@ FROM "Users" AS u
 WHERE u."Username" = @__username_0
 LIMIT 2
 2025-02-10 18:07:44.813 +01:00 [INF] Completed handling a command: sign_up.
+2025-02-11 12:49:33.978 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-11 12:49:34.177 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-11 12:49:34.185 +01:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-02-11 12:49:34.190 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-11 12:49:34.195 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-11 12:49:34.203 +01:00 [INF] Applying migration '20250211114911_UserFix'.
+2025-02-11 12:49:34.222 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvent" DROP CONSTRAINT "FK_ScheduledEvent_Events_EventsEventId";
+2025-02-11 12:49:34.227 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvent" DROP CONSTRAINT "PK_ScheduledEvent";
+2025-02-11 12:49:34.234 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvent" RENAME TO "ScheduledEvents";
+2025-02-11 12:49:34.238 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER INDEX "IX_ScheduledEvent_EventsEventId" RENAME TO "IX_ScheduledEvents_EventsEventId";
+2025-02-11 12:49:34.252 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvents" ADD CONSTRAINT "PK_ScheduledEvents" PRIMARY KEY ("EventId");
+2025-02-11 12:49:34.265 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvents" ADD CONSTRAINT "FK_ScheduledEvents_Events_EventsEventId" FOREIGN KEY ("EventsEventId") REFERENCES "Events" ("EventId");
+2025-02-11 12:49:34.271 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250211114911_UserFix', '9.0.1');
