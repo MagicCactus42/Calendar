@@ -1,17 +1,17 @@
 services:
   db:
     image: postgres:15
-    container_name: postgres0
+    container_name: postgres1
     restart: unless-stopped
     environment:
-      POSTGRES_USER: "postgres0"            
+      POSTGRES_USER: "postgres1"            
       POSTGRES_PASSWORD: "password123"      
-      POSTGRES_DB: "postgresDatabase"           
+      POSTGRES_DB: "postgresDatabase1"           
     ports:
-      - "5433:5432"
+      - "5434:5432"
     volumes:
-      - postgres0:/var/lib/postgresql/data
+      - postgres1:/var/lib/postgresql/data
 
 volumes:
-  postgres0:
+  postgres1:
     driver: local

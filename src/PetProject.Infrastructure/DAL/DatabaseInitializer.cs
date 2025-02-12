@@ -17,7 +17,7 @@ internal sealed class DatabaseInitializer : IHostedService
     {
         using var scope = _serviceProvider.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<PetProjectDbContext>();
-        
+
         await dbContext.Database.MigrateAsync(cancellationToken);
     }
 

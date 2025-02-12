@@ -13,16 +13,15 @@ internal static class Extensions
     private const string SectionName = "postgres";
     public static IServiceCollection AddPostgres(this IServiceCollection services, IConfiguration configuration)
     {
-        var section = configuration.GetSection(SectionName);
-        services.Configure<PostgresOptions>(section);
+        services.Configure<PostgresOptions>(configuration.GetRequiredSection(SectionName));
         var options = configuration.GetOptions<PostgresOptions>(SectionName);
         
         services.AddDbContext<PetProjectDbContext>(x => x.UseNpgsql(options.ConnectionString));
         services.AddScoped<IEventRepository, PostgresEventRepository>();
         services.AddScoped<IUserRepository, PostgresUserRepository>();
+        services.AddHostedService<DatabaseInitializer>();
         services.AddScoped<IUnitOfWork, PostgresUnitOfWork>();
         services.TryDecorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
-        services.AddHostedService<DatabaseInitializer>();
 
         return services;
     }
