@@ -5,7 +5,6 @@ using PetProject.Application.Commands;
 using PetProject.Application.DTO;
 using PetProject.Application.Queries;
 using PetProject.Application.Security;
-using PetProject.Core.ValueObjects;
 
 namespace PetProject.Api.Controllers;
 
@@ -29,9 +28,10 @@ public class UsersController : ControllerBase
         _getUsersQueryHandler = getUsersQueryHandler;
         _tokenStorage = tokenStorage;
     }
-
-    [HttpGet("{userId:guid}")]
+    
     [Authorize(Policy = "is-owner")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpGet("{userId:guid}")]
     public async Task<ActionResult<UserDto>> GetUser(Guid userId)
     {
         var user = await _getUserQueryHandler.HandleAsync(new GetUser { UserId = userId });
@@ -40,9 +40,10 @@ public class UsersController : ControllerBase
 
         return user;
     }
-    
-    [HttpGet("me")]
     [Authorize]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpGet("me")]
     public async Task<ActionResult<UserDto>> Get()
     {
         if (string.IsNullOrWhiteSpace(HttpContext.User.Identity?.Name))
@@ -56,8 +57,9 @@ public class UsersController : ControllerBase
         return user;
     }
     
-    [HttpGet]
     [Authorize(Policy = "is-owner")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<UserDto>>> Get([FromQuery] GetUsers query)
         => Ok(await _getUsersQueryHandler.HandleAsync(query));
     
@@ -69,6 +71,7 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(Get), new {command.UserId}, null);
     }
     
+    [ProducesResponseType(StatusCodes.Status200OK)]
     [HttpPost("sign-in")]
     public async Task<ActionResult<JwtDto>> Post(SignIn command)
     {

@@ -1,15 +1,16 @@
 @HostAddress = http://localhost:5247
-@userId = e727e29f-00e0-43f9-b519-062801ec201d
+@userId = 98591d2f-1e17-4d53-a073-f7bc120a42b6
+@id = 
 
 ###
 POST {{HostAddress}}/Users
 Content-Type: application/json
 
 {
-  "email": "cockset@proton.me",
-  "username": "cockset",
+  "email": "MagicCactus42@proton.me",
+  "username": "MagicCactus42",
   "password": "secret123",
-  "role": "user"
+  "role": "owner"
 }
 
 ###
@@ -17,28 +18,43 @@ POST {{HostAddress}}/Users/sign-in
 Content-Type: application/json
 
 {
-  "email": "cockset@proton.me",
+  "email": "MagicCactus42@proton.me",
   "password": "secret123"
 }
 
 ###
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjI0YmI4My0yYWViLTQzYmYtOThlOC02NDU2MDE1MTk3OGMiLCJ1bmlxdWVfbmFtZSI6IjViMjRiYjgzLTJhZWItNDNiZi05OGU4LTY0NTYwMTUxOTc4YyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6InVzZXIiLCJuYmYiOjE3MzkyNzUzMDIsImV4cCI6MTczOTM2MTcwMiwiaXNzIjoicGV0cHJvamVjdC1pc3N1ZXIiLCJhdWQiOiJwZXRwcm9qZWN0LWF1ZGllbmNlIn0.WaLEpg46dc5mwOi9cbzwZ6y7_m3Z7_vnPQptGv8AbWA
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYTgxOWU1MS0yZmI1LTQ5ZTktOTRhZC1jMDUzYTdmOTkzN2EiLCJ1bmlxdWVfbmFtZSI6ImRhODE5ZTUxLTJmYjUtNDllOS05NGFkLWMwNTNhN2Y5OTM3YSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Im93bmVyIiwibmJmIjoxNzM5MzUxMTc0LCJleHAiOjE3Mzk0Mzc1NzQsImlzcyI6InBldHByb2plY3QtaXNzdWVyIiwiYXVkIjoicGV0cHJvamVjdC1hdWRpZW5jZSJ9.6-Nc63DGxNfaUbJ-njBNEcxrsoxhlxpL1hisQxRAjfM
 
 ###
 GET {{HostAddress}}/Users/me
 Authorization: Bearer {{accessToken}}
 
 ###
+GET {{HostAddress}}/Users/{{userId}}
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{HostAddress}}/Users
+Authorization: Bearer {{accessToken}}
+
+###
 POST {{HostAddress}}/api/event/create
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
-  "EventName": "Work",
-  "EventDescription": "call at 2pm",
-  "From": "2025-02-10T14:00:00Z",
-  "To": "2025-02-10T15:00:00Z",
+  "EventName": "gym",
+  "EventDescription": "lower body training",
+  "From": "2025-02-13T20:00:00Z",
+  "To": "2025-02-13T22:00:00Z",
   "CanOverlap": false
 }
 
 ###
+GET {{HostAddress}}/api/event/get
+
+###
 GET {{HostAddress}}/api/event/get/{{userId}}
+
+###
+DELETE {{HostAddress}}/api/event/delete/{{id}}

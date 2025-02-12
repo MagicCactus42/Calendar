@@ -6,7 +6,7 @@ namespace PetProject.Core.Policies;
 internal sealed class RegularUserPolicy : IEventPolicy
 {
     public bool CanBeApplied(Role role)
-        => role == Role.User();
+        => role == "user";
     
     // Policy 1 - Users can only have a maximum of 5 scheduled events
     public bool CanAddEvent(IEnumerable<Events> events, UserId userId)

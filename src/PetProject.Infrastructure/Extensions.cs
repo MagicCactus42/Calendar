@@ -19,6 +19,8 @@ public static class Extensions
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddControllers();
+        services.Configure<AppOptions>(configuration.GetRequiredSection("app"));
         services.AddSingleton<ExceptionsMiddleware>();
         services.AddSecurity();
         services.AddAuth(configuration);
@@ -26,7 +28,7 @@ public static class Extensions
         
         services
             .AddSingleton<IClock, Clock>()
-            .AddPostgres();
+            .AddPostgres(configuration);
         
         services.AddCustomLogging();
         

@@ -3,11 +3,10 @@ using PetProject.Application.Exceptions;
 using PetProject.Core.DomainServices;
 using PetProject.Core.Entities;
 using PetProject.Core.Repositories;
-using PetProject.Core.ValueObjects;
 
 namespace PetProject.Application.Commands.Handlers;
 
-public class CreateEventHandler : ICommandHandler<CreateEvent>
+internal sealed class CreateEventHandler : ICommandHandler<CreateEvent>
 {
     private readonly IEventRepository _eventRepository;
     private readonly IUserRepository _userRepository;

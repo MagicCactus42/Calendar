@@ -16,23 +16,24 @@ internal sealed class PostgresUserRepository : IUserRepository
     }
 
     public Task<User?> GetByEmailAsync(Email email)
-        => _users.SingleOrDefaultAsync(x => x.Email == email);
+        => _users.AsNoTracking().SingleOrDefaultAsync(x => x.Email == email);
     
     public Task<User?> GetByUsernameAsync(Username username)
-        => _users.SingleOrDefaultAsync(x => x.Username == username);
+        => _users.AsNoTracking().SingleOrDefaultAsync(x => x.Username == username);
     
     public Task<User?> GetByUserIdAsync(UserId userId)
-        => _users.SingleOrDefaultAsync(x => x.UserId == userId);
+        => _users.AsNoTracking().SingleOrDefaultAsync(x => x.UserId == userId);
     
     public async Task<Role?> GetRoleByOwnerIdAsync(UserId ownerId)
     {
-        var user = await _users.SingleOrDefaultAsync(x => x.UserId == ownerId);
+        var user = await _users.AsNoTracking().SingleOrDefaultAsync(x => x.UserId == ownerId);
+        
         return user?.Role;
     }
 
     public async Task<UserId?> GetUserIdByUsernameAsync(Username username)
     {
-        var user = await _users.SingleOrDefaultAsync(x => x.Username == username);
+        var user = await _users.AsNoTracking().SingleOrDefaultAsync(x => x.Username == username);
         return user?.UserId;
     }
     

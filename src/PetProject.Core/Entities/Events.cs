@@ -40,9 +40,9 @@ public class Events
         _scheduledEvents.Add(scheduledEvent);
     }
     
-    internal void RemoveEvent(EventId eventId)
+    public void RemoveEvent(EventId eventId)
         => _scheduledEvents.RemoveWhere(x => x.EventId == eventId);
 
-    internal void RemoveEvents(IEnumerable<ScheduledEvent> scheduledEvents)
+    public void RemoveEvents(IEnumerable<ScheduledEvent> scheduledEvents)
         => _scheduledEvents.RemoveWhere(x => scheduledEvents.Any(r => r.EventId == x.EventId));
 }
