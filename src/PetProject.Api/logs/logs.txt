@@ -3146,3 +3146,285 @@ Npgsql.PostgresException (0x80004005): 3D000: database "postgres" does not exist
     File: postinit.c
     Line: 962
     Routine: InitPostgres
+2025-02-12 15:28:50.781 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-12 15:28:56.114 +01:00 [ERR] An error occurred using the connection to database 'postgresDatabase1' on server 'tcp://localhost:5434'.
+2025-02-12 15:28:56.136 +01:00 [ERR] Hosting failed to start
+Npgsql.NpgsqlException (0x80004005): Failed to connect to 127.0.0.1:5434
+ ---> System.Net.Sockets.SocketException (10061): Nie można nawiązać połączenia, ponieważ komputer docelowy aktywnie go odmawia.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at Npgsql.TaskTimeoutAndCancellation.ExecuteAsync(Func`2 getTaskFunc, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|214_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.PoolingDataSource.<Get>g__RentAsync|33_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.HistoryRepository.GetAppliedMigrationsAsync(CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Internal.NpgsqlHistoryRepository.GetAppliedMigrationsAsync(CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Internal.NpgsqlMigrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at PetProject.Infrastructure.DAL.DatabaseInitializer.StartAsync(CancellationToken cancellationToken) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\DatabaseInitializer.cs:line 21
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-02-12 15:29:27.946 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-12 15:29:29.264 +01:00 [ERR] Failed executing DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-12 15:29:29.624 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-12 15:29:29.662 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-12 15:29:29.671 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-12 15:29:29.691 +01:00 [INF] Applying migration '20250128184727_Init'.
+2025-02-12 15:29:29.715 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Events" (
+    "EventId" uuid NOT NULL,
+    "EventName" text NOT NULL,
+    "EventDescription" text NOT NULL,
+    "From" timestamp with time zone NOT NULL,
+    "To" timestamp with time zone NOT NULL,
+    "IsActive" boolean NOT NULL,
+    "OwnerId" uuid NOT NULL,
+    CONSTRAINT "PK_Events" PRIMARY KEY ("EventId")
+);
+2025-02-12 15:29:29.724 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Users" (
+    "UserId" uuid NOT NULL,
+    "Email" text NOT NULL,
+    "Password" text NOT NULL,
+    "Username" text NOT NULL,
+    "CreatedAt" timestamp with time zone NOT NULL,
+    CONSTRAINT "PK_Users" PRIMARY KEY ("UserId")
+);
+2025-02-12 15:29:29.728 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250128184727_Init', '9.0.1');
+2025-02-12 15:29:29.731 +01:00 [INF] Applying migration '20250207105505_ScheduledEvents'.
+2025-02-12 15:29:29.766 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Users" ALTER COLUMN "Username" TYPE character varying(30);
+2025-02-12 15:29:29.775 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Users" ALTER COLUMN "Password" TYPE character varying(100);
+2025-02-12 15:29:29.782 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Users" ALTER COLUMN "Email" TYPE character varying(50);
+2025-02-12 15:29:29.789 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Users" ADD "Role" text NOT NULL DEFAULT '';
+2025-02-12 15:29:29.792 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "Events" ADD "CanOverlap" boolean NOT NULL DEFAULT FALSE;
+2025-02-12 15:29:29.801 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ScheduledEvent" (
+    "EventId" uuid NOT NULL,
+    "EventName" text NOT NULL,
+    "EventDescription" text NOT NULL,
+    "From" timestamp with time zone NOT NULL,
+    "To" timestamp with time zone NOT NULL,
+    "IsActive" boolean NOT NULL,
+    "OwnerId" uuid NOT NULL,
+    "CanOverlap" boolean NOT NULL,
+    "EventsEventId" uuid,
+    CONSTRAINT "PK_ScheduledEvent" PRIMARY KEY ("EventId"),
+    CONSTRAINT "FK_ScheduledEvent_Events_EventsEventId" FOREIGN KEY ("EventsEventId") REFERENCES "Events" ("EventId")
+);
+2025-02-12 15:29:29.808 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Users_Email" ON "Users" ("Email");
+2025-02-12 15:29:29.814 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_Users_Username" ON "Users" ("Username");
+2025-02-12 15:29:29.820 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ScheduledEvent_EventsEventId" ON "ScheduledEvent" ("EventsEventId");
+2025-02-12 15:29:29.824 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250207105505_ScheduledEvents', '9.0.1');
+2025-02-12 15:29:29.827 +01:00 [INF] Applying migration '20250211114911_UserFix'.
+2025-02-12 15:29:29.841 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvent" DROP CONSTRAINT "FK_ScheduledEvent_Events_EventsEventId";
+2025-02-12 15:29:29.845 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvent" DROP CONSTRAINT "PK_ScheduledEvent";
+2025-02-12 15:29:29.849 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvent" RENAME TO "ScheduledEvents";
+2025-02-12 15:29:29.853 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER INDEX "IX_ScheduledEvent_EventsEventId" RENAME TO "IX_ScheduledEvents_EventsEventId";
+2025-02-12 15:29:29.860 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvents" ADD CONSTRAINT "PK_ScheduledEvents" PRIMARY KEY ("EventId");
+2025-02-12 15:29:29.865 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "ScheduledEvents" ADD CONSTRAINT "FK_ScheduledEvents_Events_EventsEventId" FOREIGN KEY ("EventsEventId") REFERENCES "Events" ("EventId");
+2025-02-12 15:29:29.868 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250211114911_UserFix', '9.0.1');
+2025-02-12 15:29:29.958 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-12 15:29:29.963 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-12 15:29:29.965 +01:00 [INF] Hosting environment: Development
+2025-02-12 15:29:29.966 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-12 15:29:30.344 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/ - null null
+2025-02-12 15:29:30.417 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-12 15:29:30.437 +01:00 [INF] Route matched with {action = "Get", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Get() on controller PetProject.Api.Controllers.HomeController (PetProject.Api).
+2025-02-12 15:29:30.448 +01:00 [INF] Executing action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-12 15:29:30.454 +01:00 [INF] Executed action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.5378ms.
+2025-02-12 15:29:30.474 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-02-12 15:29:30.486 +01:00 [INF] Executed action PetProject.Api.Controllers.HomeController.Get (PetProject.Api) in 43.7597ms
+2025-02-12 15:29:30.488 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-12 15:29:30.492 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/ - 200 null text/plain; charset=utf-8 150.5207ms
+2025-02-12 15:35:54.763 +01:00 [INF] Application is shutting down...
+2025-02-12 15:36:03.744 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-12 15:36:04.673 +01:00 [WRN] The foreign key property 'ScheduledEvent.EventsEventId1' was created in shadow state because a conflicting property with the simple name 'EventsEventId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-12 15:36:05.065 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-12 15:36:05.383 +01:00 [WRN] The foreign key property 'ScheduledEvent.EventsEventId1' was created in shadow state because a conflicting property with the simple name 'EventsEventId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-02-12 15:36:05.420 +01:00 [ERR] Hosting failed to start
+System.InvalidOperationException: An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'PetProjectDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+   at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Internal.NpgsqlMigrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at PetProject.Infrastructure.DAL.DatabaseInitializer.StartAsync(CancellationToken cancellationToken) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\DatabaseInitializer.cs:line 21
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-02-12 15:37:04.183 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-12 15:37:05.655 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-12 15:37:06.070 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-12 15:37:06.101 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-12 15:37:06.109 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-12 15:37:06.118 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-12 15:37:06.183 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-12 15:37:06.188 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-12 15:37:06.190 +01:00 [INF] Hosting environment: Development
+2025-02-12 15:37:06.191 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-12 15:37:06.431 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/ - null null
+2025-02-12 15:37:06.504 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-12 15:37:06.520 +01:00 [INF] Route matched with {action = "Get", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Get() on controller PetProject.Api.Controllers.HomeController (PetProject.Api).
+2025-02-12 15:37:06.532 +01:00 [INF] Executing action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-12 15:37:06.539 +01:00 [INF] Executed action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.9938ms.
+2025-02-12 15:37:06.558 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-02-12 15:37:06.570 +01:00 [INF] Executed action PetProject.Api.Controllers.HomeController.Get (PetProject.Api) in 44.0177ms
+2025-02-12 15:37:06.571 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-12 15:37:06.574 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/ - 200 null text/plain; charset=utf-8 146.2945ms
+2025-02-12 15:37:31.845 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5247/Users - application/json 117
+2025-02-12 15:37:31.854 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.UsersController.Post (PetProject.Api)'
+2025-02-12 15:37:31.872 +01:00 [INF] Route matched with {action = "Post", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Post(PetProject.Application.Commands.SignUp) on controller PetProject.Api.Controllers.UsersController (PetProject.Api).
+2025-02-12 15:37:32.027 +01:00 [INF] Executing action method PetProject.Api.Controllers.UsersController.Post (PetProject.Api) - Validation state: "Valid"
+2025-02-12 15:37:32.055 +01:00 [INF] Started handling a command: sign_up...
+2025-02-12 15:37:32.546 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."CreatedAt", u."Email", u."Password", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 2
+2025-02-12 15:37:32.570 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."CreatedAt", u."Email", u."Password", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Username" = @__username_0
+LIMIT 2
+2025-02-12 15:37:32.846 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?', @p4='?', @p5='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("UserId", "CreatedAt", "Email", "Password", "Role", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-02-12 15:37:32.872 +01:00 [INF] Completed handling a command: sign_up.
+2025-02-12 15:37:32.877 +01:00 [INF] Executed action method PetProject.Api.Controllers.UsersController.Post (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 848.2776ms.
+2025-02-12 15:37:32.882 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'null'.
+2025-02-12 15:37:32.912 +01:00 [INF] Executed action PetProject.Api.Controllers.UsersController.Post (PetProject.Api) in 1037.4974ms
+2025-02-12 15:37:32.915 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.UsersController.Post (PetProject.Api)'
+2025-02-12 15:37:32.925 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5247/Users - 201 0 null 1080.1316ms
+2025-02-12 15:37:38.043 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5247/Users/sign-in - application/json 67
+2025-02-12 15:37:38.051 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.UsersController.Post (PetProject.Api)'
+2025-02-12 15:37:38.061 +01:00 [INF] Route matched with {action = "Post", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PetProject.Application.DTO.JwtDto]] Post(PetProject.Application.Commands.SignIn) on controller PetProject.Api.Controllers.UsersController (PetProject.Api).
+2025-02-12 15:37:38.078 +01:00 [INF] Executing action method PetProject.Api.Controllers.UsersController.Post (PetProject.Api) - Validation state: "Valid"
+2025-02-12 15:37:38.081 +01:00 [INF] Started handling a command: sign_in...
+2025-02-12 15:37:38.150 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."CreatedAt", u."Email", u."Password", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 2
+2025-02-12 15:37:38.278 +01:00 [INF] Completed handling a command: sign_in.
+2025-02-12 15:37:38.281 +01:00 [INF] Executed action method PetProject.Api.Controllers.UsersController.Post (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 201.5689ms.
+2025-02-12 15:37:38.283 +01:00 [INF] Executing OkObjectResult, writing value of type 'PetProject.Application.DTO.JwtDto'.
+2025-02-12 15:37:38.307 +01:00 [INF] Executed action PetProject.Api.Controllers.UsersController.Post (PetProject.Api) in 242.9656ms
+2025-02-12 15:37:38.309 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.UsersController.Post (PetProject.Api)'
+2025-02-12 15:37:38.311 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5247/Users/sign-in - 200 null application/json; charset=utf-8 268.7656ms
+2025-02-12 15:37:59.922 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5247/api/event/create - application/json 158
+2025-02-12 15:38:00.015 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Post (PetProject.Api)'
+2025-02-12 15:38:00.025 +01:00 [INF] Route matched with {action = "Post", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Post(PetProject.Application.Commands.CreateEvent) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-12 15:38:00.050 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Post (PetProject.Api) - Validation state: "Valid"
+2025-02-12 15:38:00.055 +01:00 [INF] Started handling a command: create_event...
+2025-02-12 15:38:00.075 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__ownerId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."CreatedAt", u."Email", u."Password", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."UserId" = @__ownerId_0
+LIMIT 2
+2025-02-12 15:38:00.098 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."EventId", e."CanOverlap", e."EventDescription", e."EventName", e."From", e."IsActive", e."OwnerId", e."To"
+FROM "Events" AS e
+WHERE e."OwnerId" = @__userId_0
+2025-02-12 15:38:00.112 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."CreatedAt", u."Email", u."Password", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."UserId" = @__userId_0
+LIMIT 2
+2025-02-12 15:38:00.287 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = Boolean), @p1='?', @p2='?', @p3='?' (DbType = DateTime), @p4='?' (DbType = Boolean), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p8='?' (DbType = Boolean), @p9='?', @p10='?', @p11='?' (DbType = Guid), @p12='?' (DbType = DateTime), @p13='?' (DbType = Boolean), @p14='?' (DbType = Guid), @p15='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Events" SET "CanOverlap" = @p0, "EventDescription" = @p1, "EventName" = @p2, "From" = @p3, "IsActive" = @p4, "OwnerId" = @p5, "To" = @p6
+WHERE "EventId" = @p7;
+UPDATE "ScheduledEvents" SET "CanOverlap" = @p8, "EventDescription" = @p9, "EventName" = @p10, "EventsEventId" = @p11, "From" = @p12, "IsActive" = @p13, "OwnerId" = @p14, "To" = @p15
+WHERE "EventId" = @p16;
+2025-02-12 15:38:00.337 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Post (PetProject.Api) in 308.7258ms
+2025-02-12 15:38:00.338 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Post (PetProject.Api)'
+2025-02-12 15:38:00.340 +01:00 [ERR] The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See https://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.ThrowAggregateUpdateConcurrencyExceptionAsync(RelationalDataReader reader, Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Update.Internal.NpgsqlModificationCommandBatch.Consume(RelationalDataReader reader, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at PetProject.Infrastructure.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\PostgresUnitOfWork.cs:line 21
+   at PetProject.Infrastructure.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\PostgresUnitOfWork.cs:line 27
+   at PetProject.Infrastructure.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\PostgresUnitOfWork.cs:line 28
+   at PetProject.Infrastructure.DAL.Decorators.UnitOfWorkCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\Decorators\UnitOfWorkCommandHandlerDecorator.cs:line 17
+   at PetProject.Infrastructure.Logging.Decorators.LoggingCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Logging\Decorators\LoggingCommandHandlerDecorator.cs:line 23
+   at PetProject.Api.Controllers.EventsController.Post(CreateEvent command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api\Controllers\EventsController.cs:line 37
+   at lambda_method147(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at PetProject.Infrastructure.Exceptions.ExceptionsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Exceptions\ExceptionsMiddleware.cs:line 21
+2025-02-12 15:38:00.377 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5247/api/event/create - 500 null application/json; charset=utf-8 454.4897ms
+2025-02-12 15:50:35.857 +01:00 [INF] Application is shutting down...
