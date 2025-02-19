@@ -27,4 +27,13 @@ public class Events
     }
 
     public static Events Create(EventName eventName, EventDescription eventDescription, From from, To to) => new(Guid.NewGuid(), eventName, eventDescription, true, from, to, Guid.NewGuid(), true );
+
+    public void ChangeEvent(EventName eventName, EventDescription eventDescription, From from, To to, bool canOverlap)
+    {
+        EventName = eventName;
+        EventDescription = eventDescription;
+        From = from;
+        To = to;
+        CanOverlap = canOverlap;
+    }
 }

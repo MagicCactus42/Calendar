@@ -23,7 +23,8 @@ public class EventsEnumerable
 
     public void RemoveEvent(EventId eventId)
         => _events.RemoveWhere(x => x.EventId == eventId);
-
+    
     public void RemoveEvents(IEnumerable<Events> scheduledEvents)
         => _events.RemoveWhere(x => scheduledEvents.Any(r => r.EventId == x.EventId));
+    
 }

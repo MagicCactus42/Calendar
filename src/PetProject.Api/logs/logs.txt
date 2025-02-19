@@ -4451,3 +4451,362 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
 2025-02-19 11:14:11.575 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Post (PetProject.Api)'
 2025-02-19 11:14:11.576 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5247/api/event/create - 204 null null 290.2486ms
 2025-02-19 11:14:27.836 +01:00 [INF] Application is shutting down...
+2025-02-19 13:11:38.219 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-19 13:11:41.124 +01:00 [INF] Executed DbCommand (93ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:11:41.787 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-19 13:11:41.823 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-19 13:11:41.831 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:11:41.845 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-19 13:11:42.166 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Events" AS e)
+2025-02-19 13:11:42.237 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-19 13:11:42.243 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-19 13:11:42.245 +01:00 [INF] Hosting environment: Development
+2025-02-19 13:11:42.246 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-19 13:12:01.680 +01:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - null 0
+2025-02-19 13:12:01.765 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-02-19 13:12:01.771 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-02-19 13:12:01.780 +01:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - 401 0 null 101.9016ms
+2025-02-19 13:12:23.241 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5247/Users/sign-in - application/json 67
+2025-02-19 13:12:23.250 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.UsersController.Post (PetProject.Api)'
+2025-02-19 13:12:23.308 +01:00 [INF] Route matched with {action = "Post", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[PetProject.Application.DTO.JwtDto]] Post(PetProject.Application.Commands.SignIn) on controller PetProject.Api.Controllers.UsersController (PetProject.Api).
+2025-02-19 13:12:23.575 +01:00 [INF] Executing action method PetProject.Api.Controllers.UsersController.Post (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:12:23.609 +01:00 [INF] Started handling a command: sign_in...
+2025-02-19 13:12:23.897 +01:00 [INF] Executed DbCommand (40ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."CreatedAt", u."Email", u."Password", u."Role", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 2
+2025-02-19 13:12:24.053 +01:00 [INF] Completed handling a command: sign_in.
+2025-02-19 13:12:24.061 +01:00 [INF] Executed action method PetProject.Api.Controllers.UsersController.Post (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 478.9885ms.
+2025-02-19 13:12:24.075 +01:00 [INF] Executing OkObjectResult, writing value of type 'PetProject.Application.DTO.JwtDto'.
+2025-02-19 13:12:24.100 +01:00 [INF] Executed action PetProject.Api.Controllers.UsersController.Post (PetProject.Api) in 776.5936ms
+2025-02-19 13:12:24.102 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.UsersController.Post (PetProject.Api)'
+2025-02-19 13:12:24.112 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5247/Users/sign-in - 200 null application/json; charset=utf-8 870.6809ms
+2025-02-19 13:12:36.183 +01:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - null 0
+2025-02-19 13:12:36.245 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Delete (PetProject.Api)'
+2025-02-19 13:12:36.252 +01:00 [INF] Route matched with {action = "Delete", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Delete(System.Guid) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-19 13:12:36.271 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Delete (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:12:36.286 +01:00 [INF] Started handling a command: remove_event...
+2025-02-19 13:12:36.379 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__eventId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."EventId", e."CanOverlap", e."EventDescription", e."EventName", e."From", e."IsActive", e."OwnerId", e."To"
+FROM "Events" AS e
+WHERE e."EventId" = @__eventId_0
+LIMIT 2
+2025-02-19 13:12:36.522 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Delete (PetProject.Api) in 268.4547ms
+2025-02-19 13:12:36.524 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Delete (PetProject.Api)'
+2025-02-19 13:12:36.526 +01:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at PetProject.Application.Commands.Handlers.RemoveEventHandler.HandleAsync(RemoveEvent command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Application\Commands\Handlers\RemoveEventHandler.cs:line 23
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 18
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 25
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 26
+   at PetProject.Infrastructure.DAL.Decorators.UnitOfWorkCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\Decorators\UnitOfWorkCommandHandlerDecorator.cs:line 17
+   at PetProject.Infrastructure.Logging.Decorators.LoggingCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Logging\Decorators\LoggingCommandHandlerDecorator.cs:line 23
+   at PetProject.Api.Controllers.EventsController.Delete(Guid id) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api\Controllers\EventsController.cs:line 71
+   at lambda_method47(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at PetProject.Infrastructure.Exceptions.ExceptionsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Exceptions\ExceptionsMiddleware.cs:line 21
+2025-02-19 13:12:36.605 +01:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - 500 null application/json; charset=utf-8 421.3652ms
+2025-02-19 13:13:30.754 +01:00 [INF] Application is shutting down...
+2025-02-19 13:17:14.785 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-19 13:17:16.229 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:17:16.599 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-19 13:17:16.629 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-19 13:17:16.637 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:17:16.648 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-19 13:17:16.944 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Events" AS e)
+2025-02-19 13:17:16.993 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-19 13:17:16.998 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-19 13:17:17.000 +01:00 [INF] Hosting environment: Development
+2025-02-19 13:17:17.002 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-19 13:17:17.356 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/ - null null
+2025-02-19 13:17:17.417 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:17:17.430 +01:00 [INF] Route matched with {action = "Get", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Get() on controller PetProject.Api.Controllers.HomeController (PetProject.Api).
+2025-02-19 13:17:17.439 +01:00 [INF] Executing action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:17:17.446 +01:00 [INF] Executed action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.5094ms.
+2025-02-19 13:17:17.469 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-02-19 13:17:17.479 +01:00 [INF] Executed action PetProject.Api.Controllers.HomeController.Get (PetProject.Api) in 42.4808ms
+2025-02-19 13:17:17.481 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:17:17.488 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/ - 200 null text/plain; charset=utf-8 133.5976ms
+2025-02-19 13:17:17.741 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/favicon.ico - null null
+2025-02-19 13:17:17.748 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/favicon.ico - 404 0 null 7.1927ms
+2025-02-19 13:17:17.754 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5247/favicon.ico, Response status code: 404
+2025-02-19 13:17:38.323 +01:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - null 0
+2025-02-19 13:17:38.405 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Delete (PetProject.Api)'
+2025-02-19 13:17:38.417 +01:00 [INF] Route matched with {action = "Delete", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Delete(System.Guid) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-19 13:17:38.434 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Delete (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:17:38.450 +01:00 [INF] Started handling a command: remove_event...
+2025-02-19 13:17:38.628 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@__eventId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."EventId", e."CanOverlap", e."EventDescription", e."EventName", e."From", e."IsActive", e."OwnerId", e."To"
+FROM "Events" AS e
+WHERE e."EventId" = @__eventId_0
+LIMIT 2
+2025-02-19 13:17:38.731 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Delete (PetProject.Api) in 312.8146ms
+2025-02-19 13:17:38.734 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Delete (PetProject.Api)'
+2025-02-19 13:17:38.739 +01:00 [ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at PetProject.Application.Commands.Handlers.RemoveEventHandler.HandleAsync(RemoveEvent command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Application\Commands\Handlers\RemoveEventHandler.cs:line 23
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 18
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 25
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 26
+   at PetProject.Infrastructure.DAL.Decorators.UnitOfWorkCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\Decorators\UnitOfWorkCommandHandlerDecorator.cs:line 17
+   at PetProject.Infrastructure.Logging.Decorators.LoggingCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Logging\Decorators\LoggingCommandHandlerDecorator.cs:line 23
+   at PetProject.Api.Controllers.EventsController.Delete(Guid id) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api\Controllers\EventsController.cs:line 71
+   at lambda_method19(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at PetProject.Infrastructure.Exceptions.ExceptionsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Exceptions\ExceptionsMiddleware.cs:line 21
+2025-02-19 13:17:38.922 +01:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - 500 null application/json; charset=utf-8 598.4743ms
+2025-02-19 13:25:30.996 +01:00 [INF] Application is shutting down...
+2025-02-19 13:33:00.519 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-19 13:33:01.790 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:33:02.162 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-19 13:33:02.190 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-19 13:33:02.198 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:33:02.210 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-19 13:33:02.509 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Events" AS e)
+2025-02-19 13:33:02.556 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-19 13:33:02.561 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-19 13:33:02.564 +01:00 [INF] Hosting environment: Development
+2025-02-19 13:33:02.566 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-19 13:33:03.082 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/ - null null
+2025-02-19 13:33:03.158 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:33:03.246 +01:00 [INF] Route matched with {action = "Get", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Get() on controller PetProject.Api.Controllers.HomeController (PetProject.Api).
+2025-02-19 13:33:03.260 +01:00 [INF] Executing action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:33:03.271 +01:00 [INF] Executed action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.5966ms.
+2025-02-19 13:33:03.300 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-02-19 13:33:03.310 +01:00 [INF] Executed action PetProject.Api.Controllers.HomeController.Get (PetProject.Api) in 56.905ms
+2025-02-19 13:33:03.314 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:33:03.318 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/ - 200 null text/plain; charset=utf-8 239.5128ms
+2025-02-19 13:33:09.980 +01:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - null 0
+2025-02-19 13:33:10.059 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Delete (PetProject.Api)'
+2025-02-19 13:33:10.072 +01:00 [INF] Route matched with {action = "Delete", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Delete(System.Guid) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-19 13:33:10.088 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Delete (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:33:10.104 +01:00 [INF] Started handling a command: remove_event...
+2025-02-19 13:33:10.271 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[@__eventId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."EventId", e."CanOverlap", e."EventDescription", e."EventName", e."From", e."IsActive", e."OwnerId", e."To"
+FROM "Events" AS e
+WHERE e."EventId" = @__eventId_0
+LIMIT 2
+2025-02-19 13:33:10.482 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = Boolean), @p1='?', @p2='?', @p3='?' (DbType = DateTime), @p4='?' (DbType = Boolean), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Events" SET "CanOverlap" = @p0, "EventDescription" = @p1, "EventName" = @p2, "From" = @p3, "IsActive" = @p4, "OwnerId" = @p5, "To" = @p6
+WHERE "EventId" = @p7;
+2025-02-19 13:33:10.504 +01:00 [INF] Completed handling a command: remove_event.
+2025-02-19 13:33:10.508 +01:00 [INF] Executed action method PetProject.Api.Controllers.EventsController.Delete (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 417.4766ms.
+2025-02-19 13:33:10.514 +01:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-02-19 13:33:10.695 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Delete (PetProject.Api) in 620.3166ms
+2025-02-19 13:33:10.698 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Delete (PetProject.Api)'
+2025-02-19 13:33:10.709 +01:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5247/api/event/delete/ec563559-4e7a-452f-9486-9b9527f0b781 - 404 null application/problem+json; charset=utf-8 729.0722ms
+2025-02-19 13:37:12.533 +01:00 [INF] Application is shutting down...
+2025-02-19 13:39:20.368 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-19 13:39:21.660 +01:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:39:22.026 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-19 13:39:22.055 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-19 13:39:22.063 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:39:22.075 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-19 13:39:22.370 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Events" AS e)
+2025-02-19 13:39:22.413 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-19 13:39:22.420 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-19 13:39:22.422 +01:00 [INF] Hosting environment: Development
+2025-02-19 13:39:22.423 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-19 13:39:23.060 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/ - null null
+2025-02-19 13:39:23.129 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:39:23.147 +01:00 [INF] Route matched with {action = "Get", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Get() on controller PetProject.Api.Controllers.HomeController (PetProject.Api).
+2025-02-19 13:39:23.156 +01:00 [INF] Executing action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:39:23.164 +01:00 [INF] Executed action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.6116ms.
+2025-02-19 13:39:23.186 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-02-19 13:39:23.195 +01:00 [INF] Executed action PetProject.Api.Controllers.HomeController.Get (PetProject.Api) in 41.4436ms
+2025-02-19 13:39:23.196 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:39:23.201 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/ - 200 null text/plain; charset=utf-8 144.9548ms
+2025-02-19 13:39:55.240 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5247/api/event/change - application/json 158
+2025-02-19 13:39:55.363 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Put (PetProject.Api)'
+2025-02-19 13:39:55.375 +01:00 [INF] Route matched with {action = "Put", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Put(PetProject.Application.Commands.ChangeEvent) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-19 13:39:55.385 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Put (PetProject.Api) in 8.2216ms
+2025-02-19 13:39:55.388 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Put (PetProject.Api)'
+2025-02-19 13:39:55.390 +01:00 [ERR] Unable to resolve service for type 'PetProject.Application.Abstractions.ICommandHandler`1[PetProject.Application.Commands.ChangeEvent]' while attempting to activate 'PetProject.Api.Controllers.EventsController'.
+System.InvalidOperationException: Unable to resolve service for type 'PetProject.Application.Abstractions.ICommandHandler`1[PetProject.Application.Commands.ChangeEvent]' while attempting to activate 'PetProject.Api.Controllers.EventsController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method24(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at PetProject.Infrastructure.Exceptions.ExceptionsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Exceptions\ExceptionsMiddleware.cs:line 21
+2025-02-19 13:39:55.564 +01:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5247/api/event/change - 500 null application/json; charset=utf-8 324.5075ms
+2025-02-19 13:40:07.116 +01:00 [INF] Application is shutting down...
+2025-02-19 13:40:29.143 +01:00 [INF] User profile is available. Using 'C:\Users\Micha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-19 13:40:30.530 +01:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:40:31.018 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-02-19 13:40:31.048 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-02-19 13:40:31.055 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-02-19 13:40:31.068 +01:00 [INF] No migrations were applied. The database is already up to date.
+2025-02-19 13:40:31.450 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Events" AS e)
+2025-02-19 13:40:31.495 +01:00 [INF] Now listening on: http://localhost:5247
+2025-02-19 13:40:31.500 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-19 13:40:31.502 +01:00 [INF] Hosting environment: Development
+2025-02-19 13:40:31.503 +01:00 [INF] Content root path: C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api
+2025-02-19 13:40:31.898 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5247/ - null null
+2025-02-19 13:40:32.013 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:40:32.030 +01:00 [INF] Route matched with {action = "Get", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Get() on controller PetProject.Api.Controllers.HomeController (PetProject.Api).
+2025-02-19 13:40:32.041 +01:00 [INF] Executing action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:40:32.047 +01:00 [INF] Executed action method PetProject.Api.Controllers.HomeController.Get (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.4242ms.
+2025-02-19 13:40:32.067 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-02-19 13:40:32.075 +01:00 [INF] Executed action PetProject.Api.Controllers.HomeController.Get (PetProject.Api) in 38.782ms
+2025-02-19 13:40:32.076 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.HomeController.Get (PetProject.Api)'
+2025-02-19 13:40:32.080 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5247/ - 200 null text/plain; charset=utf-8 184.0205ms
+2025-02-19 13:40:40.149 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5247/api/event/change - application/json 158
+2025-02-19 13:40:40.236 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Put (PetProject.Api)'
+2025-02-19 13:40:40.247 +01:00 [INF] Route matched with {action = "Put", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Put(PetProject.Application.Commands.ChangeEvent) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-19 13:40:40.403 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Put (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:40:40.418 +01:00 [INF] Started handling a command: change_event...
+2025-02-19 13:40:40.463 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Put (PetProject.Api) in 213.2239ms
+2025-02-19 13:40:40.467 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Put (PetProject.Api)'
+2025-02-19 13:40:40.471 +01:00 [ERR] Event Id is invalid.
+PetProject.Core.Exceptions.InvalidEventIdException: Event Id is invalid.
+   at PetProject.Core.ValueObjects.EventId..ctor(Guid value) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Core\ValueObjects\EventId.cs:line 12
+   at PetProject.Core.ValueObjects.EventId.op_Implicit(Guid eventId) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Core\ValueObjects\EventId.cs:line 18
+   at PetProject.Application.Commands.Handlers.ChangeEventHandler.HandleAsync(ChangeEvent command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Application\Commands\Handlers\ChangeEventHandler.cs:line 18
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 18
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 25
+   at PetProject.Infrastructure.DAL.PostgresUnitOfWork.ExecuteAsync(Func`1 action) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\PostgresUnitOfWork.cs:line 26
+   at PetProject.Infrastructure.DAL.Decorators.UnitOfWorkCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\DAL\Decorators\UnitOfWorkCommandHandlerDecorator.cs:line 17
+   at PetProject.Infrastructure.Logging.Decorators.LoggingCommandHandlerDecorator`1.HandleAsync(TCommand command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Logging\Decorators\LoggingCommandHandlerDecorator.cs:line 23
+   at PetProject.Api.Controllers.EventsController.Put(ChangeEvent command) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Api\Controllers\EventsController.cs:line 54
+   at lambda_method20(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at PetProject.Infrastructure.Exceptions.ExceptionsMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in C:\Users\Micha\RiderProjects\PetProject\src\PetProject.Infrastructure\Exceptions\ExceptionsMiddleware.cs:line 21
+2025-02-19 13:40:40.550 +01:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5247/api/event/change - 400 null application/json; charset=utf-8 400.7287ms
+2025-02-19 13:41:10.547 +01:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5247/api/event/change - application/json 211
+2025-02-19 13:41:10.560 +01:00 [INF] Executing endpoint 'PetProject.Api.Controllers.EventsController.Put (PetProject.Api)'
+2025-02-19 13:41:10.567 +01:00 [INF] Route matched with {action = "Put", controller = "Events"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Put(PetProject.Application.Commands.ChangeEvent) on controller PetProject.Api.Controllers.EventsController (PetProject.Api).
+2025-02-19 13:41:10.581 +01:00 [INF] Executing action method PetProject.Api.Controllers.EventsController.Put (PetProject.Api) - Validation state: "Valid"
+2025-02-19 13:41:10.583 +01:00 [INF] Started handling a command: change_event...
+2025-02-19 13:41:10.819 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[@__eventId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT e."EventId", e."CanOverlap", e."EventDescription", e."EventName", e."From", e."IsActive", e."OwnerId", e."To"
+FROM "Events" AS e
+WHERE e."EventId" = @__eventId_0
+LIMIT 2
+2025-02-19 13:41:11.171 +01:00 [INF] Executed DbCommand (28ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = Boolean), @p1='?', @p2='?', @p3='?' (DbType = DateTime), @p4='?' (DbType = Boolean), @p5='?' (DbType = Guid), @p6='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Events" SET "CanOverlap" = @p0, "EventDescription" = @p1, "EventName" = @p2, "From" = @p3, "IsActive" = @p4, "OwnerId" = @p5, "To" = @p6
+WHERE "EventId" = @p7;
+2025-02-19 13:41:11.211 +01:00 [INF] Completed handling a command: change_event.
+2025-02-19 13:41:11.222 +01:00 [INF] Executed action method PetProject.Api.Controllers.EventsController.Put (PetProject.Api), returned result Microsoft.AspNetCore.Mvc.NoContentResult in 639.6398ms.
+2025-02-19 13:41:11.237 +01:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2025-02-19 13:41:11.239 +01:00 [INF] Executed action PetProject.Api.Controllers.EventsController.Put (PetProject.Api) in 668.9699ms
+2025-02-19 13:41:11.244 +01:00 [INF] Executed endpoint 'PetProject.Api.Controllers.EventsController.Put (PetProject.Api)'
+2025-02-19 13:41:11.245 +01:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5247/api/event/change - 204 null null 697.4506ms
+2025-02-19 13:41:19.015 +01:00 [INF] Application is shutting down...

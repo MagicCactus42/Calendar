@@ -13,6 +13,7 @@ public static class Extensions
         services.AddScoped<ICommandHandler<SignUp>, SignUpHandler>();
         services.AddScoped<ICommandHandler<SignIn>, SignInHandler>();
         services.AddScoped<ICommandHandler<RemoveEvent>, RemoveEventHandler>();
+        services.AddScoped<ICommandHandler<ChangeEvent>, ChangeEventHandler>();
         
         return services;
     }

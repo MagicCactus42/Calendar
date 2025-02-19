@@ -14,13 +14,15 @@ namespace PetProject.Api.Controllers
         private readonly ICommandHandler<CreateEvent> _createEvent;
         private readonly IQueryHandler<GetEvents, IEnumerable<EventsDto>> _getEvents;
         private readonly ICommandHandler<RemoveEvent> _removeEvent;
+        private readonly ICommandHandler<ChangeEvent> _changeEvent;
 
         public EventsController(ICommandHandler<CreateEvent> createEvent, IQueryHandler<GetEvents,
-            IEnumerable<EventsDto>> getEvents, ICommandHandler<RemoveEvent> removeEvent)
+            IEnumerable<EventsDto>> getEvents, ICommandHandler<RemoveEvent> removeEvent, ICommandHandler<ChangeEvent> changeEvent)
         {
             _createEvent = createEvent;
             _getEvents = getEvents;
             _removeEvent = removeEvent;
+            _changeEvent = changeEvent;
         }
 
         [Authorize]
@@ -35,6 +37,21 @@ namespace PetProject.Api.Controllers
             
             command = command with { OwnerId = Guid.Parse(ownerId) };
             await _createEvent.HandleAsync(command);
+            return NoContent();
+        }
+
+        [Authorize]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [HttpPut("change")]
+        public async Task<ActionResult> Put(ChangeEvent command)
+        {
+            var ownerId = User.Identity?.Name;
+            if (string.IsNullOrWhiteSpace(ownerId))
+                return Unauthorized();
+            
+            command = command with { OwnerId = Guid.Parse(ownerId) };
+            await _changeEvent.HandleAsync(command);
             return NoContent();
         }
         
