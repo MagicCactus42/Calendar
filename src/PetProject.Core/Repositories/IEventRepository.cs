@@ -9,5 +9,6 @@ public interface IEventRepository
     Task UpdateAsync(Events events);
     Task RemoveAsync(Events events);
     Task<Events?> GetByIdAsync(EventId eventId);
-    Task<IEnumerable<Events>> GetAllAsync(UserId userId);
+    Task<IEnumerable<Events>> GetAllByUserIdAsync(UserId userId);
+    Task<IEnumerable<Events>> GetAllAsync();
 }

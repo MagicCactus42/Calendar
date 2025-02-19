@@ -11,6 +11,7 @@ internal sealed class CreateEventHandler : ICommandHandler<CreateEvent>
     private readonly IEventRepository _eventRepository;
     private readonly IUserRepository _userRepository;
     private readonly IEventDomainService _eventDomainService;
+    private readonly EventsEnumerable _events = new();
 
     public CreateEventHandler(IEventRepository eventRepository, IEventDomainService eventDomainService, IUserRepository userRepository)
     {
@@ -23,8 +24,6 @@ internal sealed class CreateEventHandler : ICommandHandler<CreateEvent>
     {
         var role = await _userRepository.GetRoleByOwnerIdAsync(command.OwnerId);
         
-        var events = (await _eventRepository.GetAllAsync(command.OwnerId)).ToList();
-
         var user = await _userRepository.GetByUserIdAsync(command.OwnerId);
         if (user is null)
             throw new UserNotFoundException(command.OwnerId);
@@ -32,7 +31,7 @@ internal sealed class CreateEventHandler : ICommandHandler<CreateEvent>
         var newEvent = new Events(Guid.NewGuid(), command.EventName,
             command.EventDescription, true, command.From, command.To, command.OwnerId, command.CanOverlap);
         
-        _eventDomainService.CreateEventService(newEvent, role, events);
-        await _eventRepository.UpdateAsync(newEvent);
+        _eventDomainService.CreateEventService(newEvent, role, _events);
+        await _eventRepository.AddAsync(newEvent);
     }
 }

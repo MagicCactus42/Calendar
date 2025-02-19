@@ -1,6 +1,4 @@
-using PetProject.Infrastructure.DAL;
-
-namespace PetProject.Infrastructure;
+namespace PetProject.Infrastructure.DAL;
 
 internal sealed class PostgresUnitOfWork : IUnitOfWork
 {

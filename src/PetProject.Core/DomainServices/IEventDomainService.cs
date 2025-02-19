@@ -5,5 +5,5 @@ namespace PetProject.Core.DomainServices;
 
 public interface IEventDomainService
 {
-    void CreateEventService(Events events, Role role, IEnumerable<Events> eventsEnumerable);
+    void CreateEventService(Events events, Role role, EventsEnumerable eventsEnumerable);
 }

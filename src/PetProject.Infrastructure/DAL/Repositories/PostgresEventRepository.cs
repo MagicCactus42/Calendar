@@ -36,6 +36,9 @@ internal sealed class PostgresEventRepository : IEventRepository
     public async Task<Events?> GetByIdAsync(EventId eventId)
         => await _events.SingleOrDefaultAsync(x => x.EventId == eventId);
 
-    public async Task<IEnumerable<Events>> GetAllAsync(UserId userId)
+    public async Task<IEnumerable<Events>> GetAllByUserIdAsync(UserId userId)
         => await _events.Where(x => x.OwnerId == userId).ToListAsync();
+
+    public async Task<IEnumerable<Events>> GetAllAsync()
+        => await _events.ToListAsync();
 }

@@ -17,19 +17,16 @@ internal sealed class EventDomainService : IEventDomainService
         _clock = clock;
     }
 
-    public void CreateEventService(Events events, Role role, IEnumerable<Events> eventsEnumerable)
+    public void CreateEventService(Events events, Role role, EventsEnumerable eventsEnumerable)
     {
-        var scheduledEvents = new ScheduledEvent(events.EventId, events.EventName, events.EventDescription, events.From,
-            events.To, true, events.OwnerId, events.CanOverlap);
-
+        var eventsList = eventsEnumerable.Events.ToList();
         var policy = _eventPolicy.SingleOrDefault(x => x.CanBeApplied(role));
-
         if (policy is null)
             throw new NoEventPolicyFoundException(role);
 
-        if (policy.CanAddEvent(eventsEnumerable, events.OwnerId) is false)
+        if (policy.CanAddEvent(eventsList, events.OwnerId) is false)
             throw new CannotAddEventException();
         
-        events.AddEvent(scheduledEvents, new Date(_clock.Current()));
+        eventsEnumerable.AddEvent(events, new Date(_clock.Current()));
     }
 }

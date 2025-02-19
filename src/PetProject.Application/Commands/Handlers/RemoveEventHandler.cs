@@ -1,5 +1,6 @@
 using PetProject.Application.Abstractions;
 using PetProject.Application.Exceptions;
+using PetProject.Core.Entities;
 using PetProject.Core.Repositories;
 
 namespace PetProject.Application.Commands.Handlers;
@@ -7,6 +8,7 @@ namespace PetProject.Application.Commands.Handlers;
 internal sealed class RemoveEventHandler : ICommandHandler<RemoveEvent>
 {
     private readonly IEventRepository _eventRepository;
+    private readonly EventsEnumerable _events;
 
     public RemoveEventHandler(IEventRepository eventRepository)
     {
@@ -18,7 +20,7 @@ internal sealed class RemoveEventHandler : ICommandHandler<RemoveEvent>
         if (eventToRemove is null)
             throw new EventNotFoundException(command.EventId);
         
-        eventToRemove.RemoveEvent(command.EventId);
+        _events.RemoveEvent(command.EventId);
         await _eventRepository.UpdateAsync(eventToRemove);
     }
 }

@@ -11,7 +11,7 @@ internal sealed class RegularUserPolicy : IEventPolicy
     // Policy 1 - Users can only have a maximum of 5 scheduled events
     public bool CanAddEvent(IEnumerable<Events> events, UserId userId)
     {
-        var totalEvents = events.SelectMany(x => x.ScheduledEvents).Count(x => x.OwnerId == userId);
+        var totalEvents = events.Count(x => x.OwnerId == userId);
 
         return totalEvents <= 5;
     }

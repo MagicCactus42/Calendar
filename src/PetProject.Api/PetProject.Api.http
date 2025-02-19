@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ###
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNWE0NWI0MC1jZWRmLTRlZDEtYjg3My0wNDY2ZGI3MmZkNTkiLCJ1bmlxdWVfbmFtZSI6ImU1YTQ1YjQwLWNlZGYtNGVkMS1iODczLTA0NjZkYjcyZmQ1OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Im93bmVyIiwibmJmIjoxNzM5MzY3NDU4LCJleHAiOjE3Mzk0NTM4NTgsImlzcyI6InBldHByb2plY3QtaXNzdWVyIiwiYXVkIjoicGV0cHJvamVjdC1hdWRpZW5jZSJ9.ad6Lh0BqKOsygUhHJsqhFTVVyJKlieCJ1BBPAJMssmw
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNWE0NWI0MC1jZWRmLTRlZDEtYjg3My0wNDY2ZGI3MmZkNTkiLCJ1bmlxdWVfbmFtZSI6ImU1YTQ1YjQwLWNlZGYtNGVkMS1iODczLTA0NjZkYjcyZmQ1OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Im93bmVyIiwibmJmIjoxNzM5OTU2NDA0LCJleHAiOjE3NDAwNDI4MDQsImlzcyI6InBldHByb2plY3QtaXNzdWVyIiwiYXVkIjoicGV0cHJvamVjdC1hdWRpZW5jZSJ9.LE6hoOKja8hkREAlQztN3hskICswmHkuRtU-XwbCCgM
 
 ###
 GET {{HostAddress}}/Users/me
@@ -45,8 +45,8 @@ Content-Type: application/json
 {
   "EventName": "gym",
   "EventDescription": "lower body training",
-  "From": "2025-02-13T20:00:00Z",
-  "To": "2025-02-13T22:00:00Z",
+  "From": "2025-02-19T20:00:00Z",
+  "To": "2025-02-19T22:00:00Z",
   "CanOverlap": false
 }
 
