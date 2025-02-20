@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using PetProject.Application.Abstractions;
 using PetProject.Application.DTO;
 using PetProject.Application.Queries;
@@ -30,8 +31,6 @@ public static class Extensions
             .AddSingleton<IClock, Clock>()
             .AddPostgres(configuration);
         
-        services.AddCustomLogging();
-        
         // var assemblies = new[]
         // {
         //     typeof(Extensions).Assembly,
@@ -46,12 +45,31 @@ public static class Extensions
         services.AddScoped<IQueryHandler<GetUser, UserDto>, GetUserHandler>();
         services.AddScoped<IQueryHandler<GetUsers, IEnumerable<UserDto>>, GetUsersHandler>();
         
+        services.AddCustomLogging();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen(swagger =>
+        {
+            swagger.EnableAnnotations();
+            swagger.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "PetProject API",
+                Version = "v1",
+            });
+        });
+        
         return services;
     }
 
     public static WebApplication UseInfrastructure(this WebApplication app)
     {
         app.UseMiddleware<ExceptionsMiddleware>();
+        app.UseSwagger();
+        app.UseReDoc(reDoc =>
+        {
+            reDoc.RoutePrefix = "redoc";
+            reDoc.SpecUrl("/swagger/v1/swagger.json");
+            reDoc.DocumentTitle = "PetProject API";
+        });
         app.UseAuthentication();
         app.UseAuthorization();
         
