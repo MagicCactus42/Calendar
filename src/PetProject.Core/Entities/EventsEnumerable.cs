@@ -14,8 +14,9 @@ public class EventsEnumerable
         if (events.To.Value < events.From.Value || events.To.Value < now.Value)
             throw new InvalidEventTimeInterval();
 
-        if (!events.CanOverlap && _events.Any(x =>
-                x.From.Value < events.To.Value && x.To.Value > events.From.Value))
+        if (_events.Any(x => 
+                (!x.CanOverlap || !events.CanOverlap) &&
+                x.From.Value <= events.To.Value && x.To.Value >= events.From.Value))
             throw new EventTimeIntervalOverlapException();
         
         _events.Add(events);
