@@ -9,13 +9,11 @@ namespace PetProject.Application.Commands.Handlers;
 internal sealed class RemoveEventHandler : ICommandHandler<RemoveEvent>
 {
     private readonly IEventRepository _eventRepository;
-    private readonly IEventDomainService _eventDomainService;
     private readonly EventsEnumerable _events = new();
 
-    public RemoveEventHandler(IEventRepository eventRepository, IEventDomainService eventDomainService)
+    public RemoveEventHandler(IEventRepository eventRepository)
     {
         _eventRepository = eventRepository;
-        _eventDomainService = eventDomainService;
     }
     public async Task HandleAsync(RemoveEvent command)
     {
@@ -23,8 +21,8 @@ internal sealed class RemoveEventHandler : ICommandHandler<RemoveEvent>
         if (eventToRemove is null)
             throw new EventNotFoundException(command.EventId);
         
-        _events.RemoveEvent(command.EventId);
-        // _eventDomainService.
-        await _eventRepository.UpdateAsync(eventToRemove);
+        // _events.RemoveEvent(command.EventId);
+        // await _eventRepository.UpdateAsync(eventToRemove);
+        await _eventRepository.RemoveAsync(eventToRemove); 
     }
 }

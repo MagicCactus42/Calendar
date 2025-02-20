@@ -29,8 +29,4 @@ internal sealed class EventDomainService : IEventDomainService
         
         eventsEnumerable.AddEvent(events, new Date(_clock.Current()));
     }
-
-    public void RemoveEventService(Events events, EventsEnumerable eventsEnumerable)
-        => eventsEnumerable.RemoveEvent(events.EventId);
-    
 }

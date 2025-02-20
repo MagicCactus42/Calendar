@@ -1,6 +1,6 @@
 @HostAddress = http://localhost:5247
 @userId = 98591d2f-1e17-4d53-a073-f7bc120a42b6
-@id = ec563559-4e7a-452f-9486-9b9527f0b781
+@id = 1894703d-5faf-4798-bf22-a7831fd17057
 
 ###
 POST {{HostAddress}}/Users
@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ###
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNWE0NWI0MC1jZWRmLTRlZDEtYjg3My0wNDY2ZGI3MmZkNTkiLCJ1bmlxdWVfbmFtZSI6ImU1YTQ1YjQwLWNlZGYtNGVkMS1iODczLTA0NjZkYjcyZmQ1OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Im93bmVyIiwibmJmIjoxNzM5OTYzNTQzLCJleHAiOjE3NDAwNDk5NDMsImlzcyI6InBldHByb2plY3QtaXNzdWVyIiwiYXVkIjoicGV0cHJvamVjdC1hdWRpZW5jZSJ9.lEy3_3dij24YL2-AYgG4m3GXWiaF0ps9Lu0B_lbp2V8
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNWE0NWI0MC1jZWRmLTRlZDEtYjg3My0wNDY2ZGI3MmZkNTkiLCJ1bmlxdWVfbmFtZSI6ImU1YTQ1YjQwLWNlZGYtNGVkMS1iODczLTA0NjZkYjcyZmQ1OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Im93bmVyIiwibmJmIjoxNzQwMDY0Njk3LCJleHAiOjE3NDAxNTEwOTcsImlzcyI6InBldHByb2plY3QtaXNzdWVyIiwiYXVkIjoicGV0cHJvamVjdC1hdWRpZW5jZSJ9.FKHpRgI1TFub_c0_niyK_jYz_HbR0OnJ7QFnPeUn2es
 
 ###
 GET {{HostAddress}}/Users/me
@@ -44,9 +44,9 @@ Content-Type: application/json
 
 {
   "EventName": "gym",
-  "EventDescription": "lower body training",
-  "From": "2025-02-19T20:00:00Z",
-  "To": "2025-02-19T22:00:00Z",
+  "EventDescription": "chest workout",
+  "From": "2025-02-20T20:00:00Z",
+  "To": "2025-02-20T22:00:00Z",
   "CanOverlap": false
 }
 
@@ -56,11 +56,11 @@ Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
-  "EventId": "ec563559-4e7a-452f-9486-9b9527f0b781",
+  "EventId": "1894703d-5faf-4798-bf22-a7831fd17057",
   "EventName": "gym",
-  "EventDescription": "upper body training",
-  "From": "2025-02-19T20:00:00Z",
-  "To": "2025-02-19T22:00:00Z",
+  "EventDescription": "chest + delts workout",
+  "From": "2025-02-20T20:00:00Z",
+  "To": "2025-02-20T23:00:00Z",
   "CanOverlap": false
 }
 
