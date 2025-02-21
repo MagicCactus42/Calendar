@@ -44,7 +44,7 @@ public class EventsEnumerableTests
         exception.Should().BeOfType<EventTimeIntervalOverlapException>();
     }
     
-    #region ARRANGE
+    #region arrange
     
     private readonly EventsEnumerable _eventsEnumerable;
     private readonly Date _datetime;
