@@ -3,7 +3,7 @@ using PetProject.Core.Entities;
 using PetProject.Core.Exceptions;
 using PetProject.Core.ValueObjects;
 
-namespace Entities;
+namespace PetProject.Tests.Unit;
 
 public class EventsEnumerableTests
 {

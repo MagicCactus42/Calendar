@@ -5,7 +5,6 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AIPasswordHasher_00601_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003Fd4f029714312487f91856ee6cba9abf76d928_003F8c_003F1ead7658_003FIPasswordHasher_00601_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=086e4640_002D02a3_002D48a0_002Db92b_002Dca5000b3a64d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="given_invalid_date_interval_AddEvents_should_fail" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::CDA578D1-AF7E-48FA-85A9-4830E4870D3F::net9.0::Entities.EventsEnumerableTests.given_invalid_date_interval_AddEvents_should_fail&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::CDA578D1-AF7E-48FA-85A9-4830E4870D3F::net9.0::Entities.EventsEnumerableTests.overlapping_event_that_cannot_be_overlapped_should_fail&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B74FA485-A21F-415A-BEB5-1E0844DA5F41::net9.0::PetProject.Tests.Unit.EventsEnumerableTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
