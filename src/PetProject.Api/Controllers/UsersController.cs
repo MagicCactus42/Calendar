@@ -9,7 +9,7 @@ using PetProject.Application.Security;
 namespace PetProject.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/users")]
 public class UsersController : ControllerBase
 {
     private readonly ICommandHandler<SignUp> _signUpCommandHandler;
@@ -31,6 +31,7 @@ public class UsersController : ControllerBase
     
     [Authorize(Policy = "is-owner")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [HttpGet("{userId:guid}")]
     public async Task<ActionResult<UserDto>> GetUser(Guid userId)
     {
@@ -59,6 +60,7 @@ public class UsersController : ControllerBase
     
     [Authorize(Policy = "is-owner")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserDto>>> Get([FromQuery] GetUsers query)
         => Ok(await _getUsersQueryHandler.HandleAsync(query));
@@ -72,7 +74,7 @@ public class UsersController : ControllerBase
     }
     
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [HttpPost("sign-in")]
+    [HttpPost("login")]
     public async Task<ActionResult<JwtDto>> Post(SignIn command)
     {
         await _signInCommandHandler.HandleAsync(command);

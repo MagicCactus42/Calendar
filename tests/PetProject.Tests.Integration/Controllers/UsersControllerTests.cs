@@ -21,7 +21,7 @@ public class UsersControllerTests : ControllerTestsBase, IDisposable, IAsyncDisp
         var command = new SignUp(Guid.Empty, "testuser1@proton.me",
             "testpassword", "testuser1", Role.User());
         
-        var response = await Client.PostAsJsonAsync("Users", command);
+        var response = await Client.PostAsJsonAsync("api/users", command);
 
         response.StatusCode.Should().Be(HttpStatusCode.Created);
         response.Headers.Location.Should().NotBeNull();
@@ -33,7 +33,7 @@ public class UsersControllerTests : ControllerTestsBase, IDisposable, IAsyncDisp
         var user = await CreateUserInMemory();
 
         var command = new SignIn(user.Email, Password);
-        var response = await Client.PostAsJsonAsync("Users/sign-in", command);
+        var response = await Client.PostAsJsonAsync("api/users/login", command);
         
         response.StatusCode.Should().Be(HttpStatusCode.OK);
         var jwt = await response.Content.ReadFromJsonAsync<JwtDto>();
@@ -48,9 +48,28 @@ public class UsersControllerTests : ControllerTestsBase, IDisposable, IAsyncDisp
 
         Auth(user.UserId, user.Role);
 
-        var userDto = await Client.GetFromJsonAsync<UserDto>("Users/me");
+        var userDto = await Client.GetFromJsonAsync<UserDto>("api/users/me");
         userDto.Should().NotBeNull();
         userDto.Email.Should().Be(user.Email);
+    }
+
+    [Fact]
+    public async Task get_users_userid_should_return_401_forbidden_if_user_role_is_not_owner()
+    {
+        var user1 = await CreateUserAsync();
+        
+        var clock = new Clock();
+        var passwordManager = new PasswordManager(new PasswordHasher<User>());
+        const string password = Password;
+        var user0 = new User(Guid.NewGuid(), "testuser0@proton.me", passwordManager.Secure(password), "testuser0", clock.Current().UtcDateTime ,Role.User());
+    
+        await _testDatabase.DbContext.Users.AddAsync(user0);
+        await _testDatabase.DbContext.SaveChangesAsync();
+        
+        Auth(user0.UserId, user0.Role);
+        
+        var response = await Client.GetAsync($"api/users/{user1.UserId.Value}");
+        response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
 
 

@@ -8,7 +8,7 @@ using PetProject.Application.Queries;
 namespace PetProject.Api.Controllers
 {
     [ApiController]
-    [Route("api/event")]
+    [Route("api/events")]
     public class EventsController : ControllerBase
     {
         private readonly ICommandHandler<CreateEvent> _createEvent;
@@ -28,7 +28,7 @@ namespace PetProject.Api.Controllers
         [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [HttpPost("create")]
+        [HttpPost]
         public async Task<ActionResult> Post(CreateEvent command)
         {
             var ownerId = User.Identity?.Name;
@@ -43,7 +43,7 @@ namespace PetProject.Api.Controllers
         [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [HttpPut("change")]
+        [HttpPut]
         public async Task<ActionResult> Put(ChangeEvent command)
         {
             var ownerId = User.Identity?.Name;
@@ -58,7 +58,7 @@ namespace PetProject.Api.Controllers
         [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [HttpGet("get")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<EventsDto>>> Get()
         {
             var ownerId = User.Identity?.Name;
@@ -72,7 +72,7 @@ namespace PetProject.Api.Controllers
         
         [Authorize(Roles = "owner")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [HttpGet("get/{id:guid}")]
+        [HttpGet("/{id:guid}")]
         public async Task<ActionResult<IEnumerable<EventsDto>>> GetUser(Guid id)
         {
             var query = new GetEvents() { OwnerId = id };
@@ -82,7 +82,7 @@ namespace PetProject.Api.Controllers
         
         [Authorize]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [HttpDelete("delete/{id:guid}")]
+        [HttpDelete("/{id:guid}")]
         public async Task<ActionResult> Delete(Guid id)
         {
             await _removeEvent.HandleAsync(new RemoveEvent(id));

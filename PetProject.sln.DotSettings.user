@@ -10,5 +10,7 @@
     &lt;TestId&gt;xUnit::77B81729-7A3F-4649-916C-326F77DE49C9::net9.0::PetProject.Tests.Integration.Controllers.HomeControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::77B81729-7A3F-4649-916C-326F77DE49C9::net9.0::PetProject.Tests.Integration.Controllers.UsersControllerTests.post_users_should_return_201_created&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::77B81729-7A3F-4649-916C-326F77DE49C9::net9.0::PetProject.Tests.Integration.Controllers.UsersControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B74FA485-A21F-415A-BEB5-1E0844DA5F41::net9.0::PetProject.Tests.Unit.Entities.EventsEnumerableTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::77B81729-7A3F-4649-916C-326F77DE49C9::net9.0::PetProject.Tests.Integration.Controllers.EventsControllerTests.post_api_events_should_return_204_no_content&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

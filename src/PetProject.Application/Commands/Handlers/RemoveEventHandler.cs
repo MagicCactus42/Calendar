@@ -23,6 +23,7 @@ internal sealed class RemoveEventHandler : ICommandHandler<RemoveEvent>
         
         // _events.RemoveEvent(command.EventId);
         // await _eventRepository.UpdateAsync(eventToRemove);
-        await _eventRepository.RemoveAsync(eventToRemove); 
+        // TODO: change this \/ to this /\
+        await _eventRepository.RemoveAsync(eventToRemove);
     }
 }
