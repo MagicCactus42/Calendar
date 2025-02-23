@@ -1,5 +1,10 @@
 # Calendar
 
+[![Postgres](https://img.shields.io/badge/Postgres-%23316192.svg?logo=postgresql&logoColor=white)](#)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
+[![.Net 9](https://img.shields.io/badge/.NET%209-5C2D91?logo=.net&logoColor=white)](#)
+
+
 Calendar is a simple Web API project written in c#. The application follows the RESTful API convention and implements the CQRS pattern along with basic principles of DDD.
 
 ## Tech Stack
