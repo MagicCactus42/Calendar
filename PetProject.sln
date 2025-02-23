@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 #
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{871311EB-3A97-415B-842B-CD83AED9E615}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Api", "src\PetProject.Api\PetProject.Api.csproj", "{BC04A263-F168-41F7-BC75-B0C2BA634439}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Api", "src\Calendar.Api\Calendar.Api.csproj", "{BC04A263-F168-41F7-BC75-B0C2BA634439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Application", "src\PetProject.Application\PetProject.Application.csproj", "{8D0CF92C-D5CA-4568-A808-69407983335D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Application", "src\Calendar.Application\Calendar.Application.csproj", "{8D0CF92C-D5CA-4568-A808-69407983335D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Core", "src\PetProject.Core\PetProject.Core.csproj", "{072E973A-45A2-446B-9D69-3E5DD69746AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Core", "src\Calendar.Core\Calendar.Core.csproj", "{072E973A-45A2-446B-9D69-3E5DD69746AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Infrastructure", "src\PetProject.Infrastructure\PetProject.Infrastructure.csproj", "{717E788E-4201-4DD3-8251-42924C0888AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Infrastructure", "src\Calendar.Infrastructure\Calendar.Infrastructure.csproj", "{717E788E-4201-4DD3-8251-42924C0888AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8E2AE6EB-E8AF-4CDF-AEBF-7F4C9C56B476}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Tests.Unit", "tests\PetProject.Tests.Unit\PetProject.Tests.Unit.csproj", "{B74FA485-A21F-415A-BEB5-1E0844DA5F41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Tests.Unit", "tests\Calendar.Tests.Unit\Calendar.Tests.Unit.csproj", "{B74FA485-A21F-415A-BEB5-1E0844DA5F41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetProject.Tests.Integration", "tests\PetProject.Tests.Integration\PetProject.Tests.Integration.csproj", "{77B81729-7A3F-4649-916C-326F77DE49C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Tests.Integration", "tests\Calendar.Tests.Integration\Calendar.Tests.Integration.csproj", "{77B81729-7A3F-4649-916C-326F77DE49C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

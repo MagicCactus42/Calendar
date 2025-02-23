@@ -1,0 +1,77 @@
+@HostAddress = http://localhost:5247
+@userId = 06b5604f-6fb1-4436-8996-1dc9ec954576
+@id = 49e70dd0-9618-4c1f-bb36-e13c55e15885
+
+###
+POST {{HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "email": "oset@proton.me",
+  "username": "oset",
+  "password": "secret123",
+  "role": "user"
+}
+
+###
+POST {{HostAddress}}/api/users/login
+Content-Type: application/json
+
+{
+  "email": "MagicCactus42@proton.me",
+  "password": "secret123"
+}
+
+###
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNWE0NWI0MC1jZWRmLTRlZDEtYjg3My0wNDY2ZGI3MmZkNTkiLCJ1bmlxdWVfbmFtZSI6ImU1YTQ1YjQwLWNlZGYtNGVkMS1iODczLTA0NjZkYjcyZmQ1OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Im93bmVyIiwibmJmIjoxNzQwMzI2ODYwLCJleHAiOjE3NDA0MTMyNjAsImlzcyI6ImNhbGVuZGFyLWlzc3VlciIsImF1ZCI6ImNhbGVuZGFyLWF1ZGllbmNlIn0.1WnM3unon99gQfCoPlXDsse8fWBXqD7-FzGFpaabWoA
+
+###
+GET {{HostAddress}}/api/users/me
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{HostAddress}}/api/users/{{userId}}
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{HostAddress}}/api/users
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{HostAddress}}/api/events
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "EventName": "cardio",
+  "EventDescription": "swimming session at 3pm, wednesday",
+  "From": "2025-02-26T15:00:00Z",
+  "To": "2025-02-26T16:30:00Z",
+  "CanOverlap": false
+}
+
+###
+PUT {{HostAddress}}/api/events
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "EventId": "49e70dd0-9618-4c1f-bb36-e13c55e15885",
+  "EventName": "cardio",
+  "EventDescription": "running session at 3pm, wednesday",
+  "From": "2025-02-26T15:00:00Z",
+  "To": "2025-02-26T16:30:00Z",
+  "CanOverlap": false
+}
+
+###
+GET {{HostAddress}}/api/events
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{HostAddress}}/api/events/{{userId}}
+Authorization: Bearer {{accessToken}}
+
+###
+DELETE {{HostAddress}}/api/events/{{id}}
+Authorization: Bearer {{accessToken}}
