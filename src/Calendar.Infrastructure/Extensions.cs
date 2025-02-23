@@ -31,16 +31,14 @@ public static class Extensions
             .AddSingleton<IClock, Clock>()
             .AddPostgres(configuration);
         
-        // var assemblies = new[]
-        // {
-        //     typeof(Extensions).Assembly,
-        //     typeof(IQueryHandler<,>).Assembly
-        // };
-
-        // services.Scan(s => s.FromAssemblies(assemblies)
-        //         .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
-        //         .AsImplementedInterfaces().WithScopedLifetime());
-
+        // var infrastructureAssembly = typeof(AppOptions).Assembly;
+        //
+        // services.Scan(s => s.FromAssemblies(infrastructureAssembly)
+        //     .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
+        //     .AsImplementedInterfaces()
+        //     .WithScopedLifetime());
+        // TODO: make scrutor work
+        
         services.AddScoped<IQueryHandler<GetEvents, IEnumerable<EventsDto>>, GetEventsHandler>();
         services.AddScoped<IQueryHandler<GetUser, UserDto>, GetUserHandler>();
         services.AddScoped<IQueryHandler<GetUsers, IEnumerable<UserDto>>, GetUsersHandler>();
@@ -52,7 +50,7 @@ public static class Extensions
             swagger.EnableAnnotations();
             swagger.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "PetProject API",
+                Title = "Calendar API",
                 Version = "v1",
             });
         });
@@ -68,7 +66,7 @@ public static class Extensions
         {
             reDoc.RoutePrefix = "redoc";
             reDoc.SpecUrl("/swagger/v1/swagger.json");
-            reDoc.DocumentTitle = "PetProject API";
+            reDoc.DocumentTitle = "Calendar API";
         });
         app.UseAuthentication();
         app.UseAuthorization();
