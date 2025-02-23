@@ -72,7 +72,7 @@ namespace PetProject.Api.Controllers
         
         [Authorize(Roles = "owner")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [HttpGet("/{id:guid}")]
+        [HttpGet("{id:guid}")]
         public async Task<ActionResult<IEnumerable<EventsDto>>> GetUser(Guid id)
         {
             var query = new GetEvents() { OwnerId = id };
@@ -82,7 +82,7 @@ namespace PetProject.Api.Controllers
         
         [Authorize]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [HttpDelete("/{id:guid}")]
+        [HttpDelete("{id:guid}")]
         public async Task<ActionResult> Delete(Guid id)
         {
             await _removeEvent.HandleAsync(new RemoveEvent(id));
